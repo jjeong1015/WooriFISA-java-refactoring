@@ -26,15 +26,22 @@ public class EndView {
 	
 	//진행중인 모든 프로젝트 출력
 	public static void projectListView(ArrayList<TalentDonationProject> allProbonoProject){
+		/* 원래 코드 */
+		// int index = 1;
+		// for(TalentDonationProject project : allProbonoProject) {
+			
+		// 	if(project != null){
+		// 		System.out.println("[진행 중인 project : " + (index++) + "] " + project);
+		// 	}
+			
+		// }
+
+		/* 수정 코드 */
+		AtomicInteger index = new AtomicInteger(1);
+    		allProbonoProject.stream()
+        		.filter(project -> project != null)
+        		.forEach(project -> System.out.println("[진행 중인 project : " + index.getAndIncrement() + "] " + project));
 		
-		int index = 1;
-		for(TalentDonationProject project : allProbonoProject) {
-			
-			if(project != null){
-				System.out.println("[진행 중인 project : " + (index++) + "] " + project);
-			}
-			
-		}
 	}
 
 	public static void successMessage(String message) {
