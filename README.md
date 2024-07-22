@@ -57,7 +57,7 @@ public static void projectListView(ArrayList<TalentDonationProject> allProbonoPr
     }
 }
 
-#### Refactored Code
+//Refactored Code
 //진행중인 모든 프로젝트 출력
 public static void projectListView(ArrayList<TalentDonationProject> allProbonoProject){
     AtomicInteger index = new AtomicInteger(1);
