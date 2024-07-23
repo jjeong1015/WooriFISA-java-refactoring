@@ -1,4 +1,4 @@
-## Refactoring Changes
+## :joystick:	Refactoring Changes
 
 ### `TalentDonationProjectService.java`
 
@@ -24,21 +24,6 @@ public TalentDonationProject getDonationProject(String projectName) {
       .filter(project -> project != null && project.getTalentDonationProjectName().equals(projectName))
       .findFirst()
       .orElse(null);
-}
-```
-
-
-- 리팩토링 코드
-```
- /**
- * Project 이름으로 검색 - 객체된 Project 반환하기
- * 
- * @param projectName 프로젝트 이름
- * @return TalentDonationProject 검색된 프로젝트
- */
-public TalentDonationProject getDonationProject(String projectName) {
-  
-  
 }
 ```
 
