@@ -100,8 +100,8 @@ public static void projectListView(ArrayList<TalentDonationProject> allProbonoPr
 ```
 
 ### 고찰
-허예은 : 리팩토링 과정을 통해 Stream API와 Lambda에 대해 더 잘 이해할 수 있었습니다.
-이정민 : 리팩토링을 하며 람다식 문법에 대해 파악할 수 있는 좋은 기회였습니다.
-최나영 : stream을 사용하여 가독성이 좋아지고 코드가 간결해져서 앞으로도 많이 활용할 수 있을 것 같습니다.
+- 허예은 : 리팩토링 과정을 통해 Stream API와 Lambda에 대해 더 잘 이해할 수 있었습니다.
+- 이정민 : 리팩토링을 하며 람다식 문법에 대해 파악할 수 있는 좋은 기회였습니다.
+- 최나영 : stream을 사용하여 가독성이 좋아지고 코드가 간결해져서 앞으로도 많이 활용할 수 있을 것 같습니다.
 
 
