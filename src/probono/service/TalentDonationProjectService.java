@@ -80,11 +80,17 @@ public class TalentDonationProjectService {
 	public void donationProjectInsert(TalentDonationProject project)
 			throws Exception {
 		
-		TalentDonationProject p = getDonationProject(project.getTalentDonationProjectName());
+		// TalentDonationProject p = getDonationProject(project.getTalentDonationProjectName());
 
-		if (p != null) {
-			throw new Exception("해당 project명은 이미 존재합니다. 재 확인하세요");
-		}
+		// if (p != null) {
+		// 	throw new Exception("해당 project명은 이미 존재합니다. 재 확인하세요");
+		// }
+
+		donationProjectList.stream()
+				.filter(p -> p != null && getDonationProject(project.getTalentDonationProjectName()) != null)
+				.findFirst().ifPresent(p -> {
+					throw new RuntimeException("해당 project명은 이미 존재합니다. 재 확인하세요");
+				});
 
 		donationProjectList.add(project);
 		
@@ -98,21 +104,35 @@ public class TalentDonationProjectService {
 	 */
 	public void donationProjectUpdate(String projectName, Donator people) throws Exception {
 
-		for (TalentDonationProject project : donationProjectList) {
+		// for (TalentDonationProject project : donationProjectList) {
 
-			if (project != null && project.getTalentDonationProjectName().equals(projectName)) {
+		// 	if (project != null && project.getTalentDonationProjectName().equals(projectName)) {
 
-				if (people != null) {
-					project.setProjectDonator(people);
-					break;
-				} else {
-					throw new Exception("프로젝트 이름은 있으나 기부자 정보 누락 재확인 하세요");
-				}
+		// 		if (people != null) {
+		// 			project.setProjectDonator(people);
+		// 			break;
+		// 		} else {
+		// 			throw new Exception("프로젝트 이름은 있으나 기부자 정보 누락 재확인 하세요");
+		// 		}
 
-			} else {
-				throw new Exception("프로젝트 이름과 기부자 정보 재 확인 하세요");
-			}
-		}
+		// 	} else {
+		// 		throw new Exception("프로젝트 이름과 기부자 정보 재 확인 하세요");
+		// 	}
+		// }
+
+		donationProjectList.stream()
+				.filter(project -> project != null && project.getTalentDonationProjectName().equals(projectName))
+				.findFirst().ifPresentOrElse(project -> {
+					if (people != null) {
+						project.setProjectDonator(people);
+					} else {
+						// Exception이 아니고 RuntimeException인 이유 : 람다 표현식 내에서 검사된 예외를 던질 수 없으므로
+						// RuntimeException을 사용
+						throw new RuntimeException("프로젝트 이름은 있으나 기부자 정보 누락 재확인 하세요");
+					}
+				}, () -> {
+					throw new RuntimeException("프로젝트 이름과 기부자 정보 재 확인 하세요");
+				});
 
 	}
 
@@ -125,15 +145,19 @@ public class TalentDonationProjectService {
 	 */
 	public void beneficiaryProjectUpdate(String projectName, Beneficiary people) {
 
-		for (TalentDonationProject project : donationProjectList) {
+		// for (TalentDonationProject project : donationProjectList) {
 
-			if (project != null && project.getTalentDonationProjectName().equals(projectName)) {
+		// 	if (project != null && project.getTalentDonationProjectName().equals(projectName)) {
 
-				project.setProjectBeneficiary(people);
+		// 		project.setProjectBeneficiary(people);
 
-				break;
-			}
-		}
+		// 		break;
+		// 	}
+		// }
+
+		donationProjectList.stream()
+				.filter(project -> project != null && project.getTalentDonationProjectName().equals(projectName))
+				.forEach(project -> project.setProjectBeneficiary(people));
 
 	}
 
@@ -146,9 +170,12 @@ public class TalentDonationProjectService {
 	public void donationProjectDelete(String projectName) {
 		TalentDonationProject project = getDonationProject(projectName);
 
-		if (project != null) {
-			donationProjectList.remove(project);
-		}
+		// if (project != null) {
+		// 	donationProjectList.remove(project);
+		// }
+
+		donationProjectList.stream().filter(p -> p != null && p.equals(project)).findFirst()
+				.ifPresent(p -> donationProjectList.remove(p));
 
 	}
 
