@@ -1,6 +1,6 @@
 ## :joystick:	Refactoring Changes
 
-2024-07-22 | 허예은, 이정민, 최나영
+2024-07-22 | [허예은](https://github.com/yyyeun), [이정민](https://github.com/jjeong1015), [최나영](https://github.com/na-rong)
 ### :star2: 프로젝트 개요
 - 재능 기부자와 수혜자 매칭 프로그램
 
