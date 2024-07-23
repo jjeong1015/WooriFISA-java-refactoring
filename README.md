@@ -1,5 +1,7 @@
 ## :joystick:	Refactoring Changes
 
+2024-07-22 | 허예은, 신혜원, 이정민, 최나영
+
 ### `TalentDonationProjectService.java`
 
 #### Original Code & Refactored Code
