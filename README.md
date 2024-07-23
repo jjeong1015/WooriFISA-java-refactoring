@@ -1,6 +1,11 @@
 ## :joystick:	Refactoring Changes
 
 2024-07-22 | 허예은, 이정민, 최나영
+### :star2: 프로젝트 개요
+- 재능 기부자와 수혜자 매칭 프로그램
+
+### :collision: 수행 과제
+- Stream API와 Lambda 활용하기
 
 ### `TalentDonationProjectService.java`
 
